@@ -64,6 +64,8 @@ public class Controller {
     @FXML
     void initialize() {
 
+        checkBoxPicea.setSelected(true);
+
         btnDodaj.setOnAction(event -> {
             stringLength = lengthActionField();
             stringDiameter = diameterActionField();

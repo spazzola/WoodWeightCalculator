@@ -4,6 +4,8 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -22,6 +24,11 @@
    <children>
       <Pane fx:id="pane" prefHeight="425.0" prefWidth="451.0" style="-fx-background-color: white;">
          <children>
+            <ImageView fx:id="logoGL" fitHeight="167.0" fitWidth="302.0" layoutX="165.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/Users/spazzola/Desktop/IMG_4646.jpg" />
+               </image>
+            </ImageView>
             <TextField fx:id="lengthField" layoutX="122.0" layoutY="97.0" onAction="#lengthActionField" />
             <TextField fx:id="diameterField" layoutX="122.0" layoutY="151.0" onAction="#diameterActionField" />
             <Label layoutX="57.0" layoutY="102.0" text="Długość" />
@@ -48,21 +55,26 @@
                </font>
             </Label>
             <Button fx:id="btnZeruj" layoutX="212.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionZeruj" prefHeight="27.0" prefWidth="53.0" text="Zeruj" textFill="#f50505" />
-            <Label layoutX="347.0" layoutY="413.0" prefHeight="13.0" text="Created by Rafal Szczotka">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Label>
             <CheckBox fx:id="checkBoxPicea" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" text="Świerk" />
-            <CheckBox fx:id="checkBoxPinus" layoutX="130.0" layoutY="39.0" mnemonicParsing="false" text="Sosna" />
-            <CheckBox fx:id="checkBoxLarix" layoutX="199.0" layoutY="39.0" mnemonicParsing="false" text="Modrzew" />
-            <CheckBox fx:id="checkBoxFagus" layoutX="289.0" layoutY="39.0" mnemonicParsing="false" text="Buk" />
-            <CheckBox fx:id="checkBoxQuercus" layoutX="354.0" layoutY="39.0" mnemonicParsing="false" text="Dąb" />
-            <ImageView fx:id="logoGL" fitHeight="150.0" fitWidth="260.0" layoutX="202.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="file:/Users/spazzola/Desktop/IMG_4646.jpg" />
-               </image>
-            </ImageView>
+            <CheckBox fx:id="checkBoxPinus" layoutX="122.0" layoutY="39.0" mnemonicParsing="false" text="Sosna" />
+            <CheckBox fx:id="checkBoxLarix" layoutX="193.0" layoutY="39.0" mnemonicParsing="false" text="Modrzew" />
+            <CheckBox fx:id="checkBoxFagus" layoutX="280.0" layoutY="39.0" mnemonicParsing="false" text="Buk" />
+            <CheckBox fx:id="checkBoxQuercus" layoutX="334.0" layoutY="39.0" mnemonicParsing="false" text="Dąb" />
+            <Label layoutX="298.0" layoutY="102.0" text="m" />
+            <Label layoutX="295.0" layoutY="156.0" text="cm" />
+            <ToggleButton layoutX="385.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="33.0" text="Eng">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup1" />
+               </toggleGroup>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton layoutX="418.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="33.0" selected="true" text="Pl" toggleGroup="$toggleGroup1">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </ToggleButton>
          </children>
       </Pane>
    </children>
