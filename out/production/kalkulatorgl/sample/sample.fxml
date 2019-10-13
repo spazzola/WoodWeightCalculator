@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gridPane" alignment="center" hgap="10" prefHeight="426.0" prefWidth="448.0" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane fx:id="gridPane" alignment="center" hgap="10" prefHeight="400.0" prefWidth="448.0" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -22,47 +22,47 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Pane fx:id="pane" prefHeight="425.0" prefWidth="451.0" style="-fx-background-color: white;">
+      <Pane fx:id="paneDluzyca" prefHeight="401.0" prefWidth="448.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fx:id="logoGL" fitHeight="167.0" fitWidth="302.0" layoutX="165.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoGL" fitHeight="180.0" fitWidth="305.0" layoutX="147.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/Users/spazzola/Desktop/IMG_4646.jpg" />
+                  <Image url="file:/Users/spazzola/Desktop/kalkulatorgl/images/IMG_4951.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="lengthField" layoutX="122.0" layoutY="97.0" onAction="#lengthActionField" />
-            <TextField fx:id="diameterField" layoutX="122.0" layoutY="151.0" onAction="#diameterActionField" />
-            <Label layoutX="57.0" layoutY="102.0" text="Długość" />
-            <Label layoutX="55.0" layoutY="156.0" text="Średnica" />
-            <Button fx:id="btnDodaj" layoutX="140.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionDodaj" text="Dodaj" />
-            <Label layoutX="68.0" layoutY="268.0" text="m3">
+            <TextField fx:id="lengthField" layoutX="122.0" layoutY="97.0" />
+            <TextField fx:id="diameterField" layoutX="122.0" layoutY="151.0" />
+            <Label fx:id="lengthLabel" layoutX="57.0" layoutY="102.0" text="Długość" textAlignment="CENTER" />
+            <Label fx:id="diameterLabel" layoutX="55.0" layoutY="156.0" text="Średnica" />
+            <Button fx:id="btnAdd" layoutX="140.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionDodaj" prefWidth="55.0" text="Dodaj" />
+            <Label fx:id="m3Label" layoutX="68.0" layoutY="268.0" text="m3">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="43.0" layoutY="352.0" text="Łącznie m3">
+            <Label fx:id="sumM3Label" layoutX="43.0" layoutY="352.0" text="Łącznie m3">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="m3Label" layoutX="159.0" layoutY="266.0" prefHeight="27.0" prefWidth="105.0" text="0.00">
+            <Label fx:id="m3" layoutX="159.0" layoutY="266.0" prefHeight="27.0" prefWidth="105.0" text="0.00">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lacznieM3Label" layoutX="158.0" layoutY="352.0" text="0.00">
+            <Label fx:id="sumM3" layoutX="158.0" layoutY="352.0" text="0.00">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnZeruj" layoutX="212.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionZeruj" prefHeight="27.0" prefWidth="53.0" text="Zeruj" textFill="#f50505" />
-            <CheckBox fx:id="checkBoxPicea" layoutX="50.0" layoutY="39.0" mnemonicParsing="false" text="Świerk" />
-            <CheckBox fx:id="checkBoxPinus" layoutX="122.0" layoutY="39.0" mnemonicParsing="false" text="Sosna" />
-            <CheckBox fx:id="checkBoxLarix" layoutX="193.0" layoutY="39.0" mnemonicParsing="false" text="Modrzew" />
-            <CheckBox fx:id="checkBoxFagus" layoutX="280.0" layoutY="39.0" mnemonicParsing="false" text="Buk" />
-            <CheckBox fx:id="checkBoxQuercus" layoutX="334.0" layoutY="39.0" mnemonicParsing="false" text="Dąb" />
+            <Button fx:id="btnReset" layoutX="178.0" layoutY="226.0" mnemonicParsing="false" onAction="#actionZeruj" prefHeight="27.0" prefWidth="55.0" text="Zeruj" textFill="#f50505" />
+            <CheckBox fx:id="checkBoxPicea" layoutX="336.0" layoutY="75.0" mnemonicParsing="false" text="Świerk" />
+            <CheckBox fx:id="checkBoxPinus" layoutX="336.0" layoutY="105.0" mnemonicParsing="false" text="Sosna" />
+            <CheckBox fx:id="checkBoxLarix" layoutX="336.0" layoutY="135.0" mnemonicParsing="false" text="Modrzew" />
+            <CheckBox fx:id="checkBoxFagus" layoutX="336.0" layoutY="165.0" mnemonicParsing="false" text="Buk" />
+            <CheckBox fx:id="checkBoxQuercus" layoutX="336.0" layoutY="195.0" mnemonicParsing="false" text="Dąb" />
             <Label layoutX="298.0" layoutY="102.0" text="m" />
             <Label layoutX="295.0" layoutY="156.0" text="cm" />
-            <ToggleButton layoutX="385.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="33.0" text="Eng">
+            <ToggleButton fx:id="toggleEng" layoutX="385.0" layoutY="-1.0" mnemonicParsing="false" onAction="#actionToggleEng" prefHeight="23.0" prefWidth="33.0" text="Eng">
                <toggleGroup>
                   <ToggleGroup fx:id="toggleGroup1" />
                </toggleGroup>
@@ -70,11 +70,12 @@
                   <Font size="10.0" />
                </font>
             </ToggleButton>
-            <ToggleButton layoutX="418.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="33.0" selected="true" text="Pl" toggleGroup="$toggleGroup1">
+            <ToggleButton fx:id="togglePl" layoutX="418.0" layoutY="-1.0" mnemonicParsing="false" onAction="#actionTogglePl" prefHeight="23.0" prefWidth="33.0" selected="true" text="Pl" toggleGroup="$toggleGroup1">
                <font>
                   <Font size="10.0" />
                </font>
             </ToggleButton>
+            <Button fx:id="btnUndo" layoutX="212.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionUndo" prefWidth="55.0" text="Cofnij" />
          </children>
       </Pane>
    </children>

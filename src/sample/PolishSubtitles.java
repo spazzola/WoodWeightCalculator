@@ -10,9 +10,9 @@ public enum PolishSubtitles {
     FAGUS("Buk"),
     QUERCUS("Dąb"),
     SUM_OF_M3("Łącznie m3"),
-    BTN_DODAJ("Dodaj"),
-    BTN_ZERUJ("Zeruj");
-
+    BTN_ADD("Dodaj"),
+    BTN_UNDO("Cofnij"),
+    BTN_RESET("Zeruj");
 
 
     private String name;

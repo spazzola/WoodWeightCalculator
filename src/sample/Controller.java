@@ -5,25 +5,36 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import sample.service.WoodCalculator;
 
 public class Controller {
 
-    private String woodType;
-    private String stringLength;
-    private String stringDiameter;
+    private double lastWood;
     private double totalWeight = 0;
 
     @FXML
-    private Button btnDodaj;
+    private Button btnAdd;
 
     @FXML
-    private Button btnZeruj;
+    private Button btnUndo;
 
     @FXML
-    private Label m3Label;
+    private Button btnReset;
 
     @FXML
-    private Label lacznieM3Label;
+    private Label m3;
+
+    @FXML
+    private Label sumM3;
+
+    @FXML
+    private Label sumM3Label;
+
+    @FXML
+    private Label lengthLabel;
+
+    @FXML
+    private Label diameterLabel;
 
     @FXML
     private TextField lengthField;
@@ -46,80 +57,148 @@ public class Controller {
     @FXML
     private CheckBox checkBoxQuercus;
 
+    @FXML
+    private ToggleButton toggleEng;
+
+    @FXML
+    private ToggleButton togglePl;
+
+
+
 
     public Controller() {
 
     }
 
-    @FXML
-    public String lengthActionField() {
-        return lengthField.getText();
-    }
-
-    @FXML
-    public String diameterActionField() {
-        return diameterField.getText();
-    }
 
     @FXML
     void initialize() {
 
+        toggleEng.setOnAction(event -> {
+            setEnglishSubtitles();
+        });
+
+        togglePl.setOnAction(event -> {
+            setPolishSubtitles();
+        });
+
         checkBoxPicea.setSelected(true);
-
-        btnDodaj.setOnAction(event -> {
-            stringLength = lengthActionField();
-            stringDiameter = diameterActionField();
-
-            int length = Integer.parseInt(stringLength);
-            int diameter = Integer.parseInt(stringDiameter);
-
-            actionDodaj();
-
-            if (checkBoxPicea.isSelected()) {
-                woodType = "Picea";
-
-            } else if (checkBoxPinus.isSelected()) {
-                woodType = "Pinus";
-
-            } else if (checkBoxLarix.isSelected()) {
-                woodType = "Larix";
-
-            } else if (checkBoxFagus.isSelected()) {
-                woodType = "Fagus";
-
-            } else if (checkBoxQuercus.isSelected()) {
-                woodType = "Quercus";
-            }
-
-            double v = Calculator.returnWoodWeightFX(length, diameter, woodType);
-            totalWeight += v;
-
-            String stringWoodWeight = Double.toString(v);
-            String stringTotalWeight = Double.toString(totalWeight);
-
-            m3Label.setText(stringWoodWeight);
-            lacznieM3Label.setText(stringTotalWeight);
-
-            lengthField.clear();
-            diameterField.clear();
-        });
-
-        btnZeruj.setOnAction(event -> {
-            m3Label.setText("0.00");
-            lacznieM3Label.setText("0.00");
-            totalWeight = 0;
-        });
     }
 
+    private String getWoodType() {
+        if (checkBoxPicea.isSelected()) {
+            return "Picea";
+
+        } else if (checkBoxPinus.isSelected()) {
+            return "Pinus";
+
+        } else if (checkBoxLarix.isSelected()) {
+            return "Larix";
+
+        } else if (checkBoxFagus.isSelected()) {
+            return "Fagus";
+
+        } else if (checkBoxQuercus.isSelected()) {
+            return "Quercus";
+        }
+
+        return null;
+    }
 
     @FXML
     public void actionDodaj() {
-        lengthActionField();
+        final String stringLength = lengthField.getText();
+        final String stringDiameter = diameterField.getText();
+
+        final String woodType = getWoodType();
+        double v = 0;
+
+        try {
+            int length = Integer.parseInt(stringLength);
+            int diameter = Integer.parseInt(stringDiameter);
+
+            v = WoodCalculator.returnWoodWeight(length, diameter, woodType);
+            totalWeight += v;
+            lastWood = v;
+
+        } catch (NumberFormatException e) {
+            System.out.println("Incorrect type.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Value below 0, please insert positive value.");
+        }
+
+
+        final String stringWoodWeight = Double.toString(v);
+        final String stringTotalWeight = Double.toString(totalWeight);
+
+        m3.setText(stringWoodWeight);
+        sumM3.setText(stringTotalWeight);
+
+        lengthField.clear();
+        diameterField.clear();
     }
 
     @FXML
     public void actionZeruj() {
+        btnReset.setOnAction(event -> {
+            m3.setText("0.00");
+            sumM3.setText("0.00");
+            totalWeight = 0;
+        });
+    }
 
+    @FXML
+    public void actionUndo() {
+        btnUndo.setOnAction(event -> {
+            totalWeight -= lastWood;
+            String stringTotalWeight = Double.toString(totalWeight);
+            m3.setText("0.00");
+            sumM3.setText(stringTotalWeight);
+        });
+    }
+
+    @FXML
+    public void actionToggleEng() {
+        toggleEng.isSelected();
+    }
+
+    @FXML
+    public void actionTogglePl() {
+        togglePl.isSelected();
+    }
+
+    private void setPolishSubtitles() {
+        btnAdd.setText(PolishSubtitles.BTN_ADD.getName());
+        btnUndo.setText(PolishSubtitles.BTN_UNDO.getName());
+        btnReset.setText(PolishSubtitles.BTN_RESET.getName());
+
+        lengthLabel.setText(PolishSubtitles.LENGTH.getName());
+        diameterLabel.setText(PolishSubtitles.DIAMETER.getName());
+        sumM3Label.setText(PolishSubtitles.SUM_OF_M3.getName());
+
+        checkBoxPicea.setText(PolishSubtitles.PICEA.getName());
+        checkBoxPinus.setText(PolishSubtitles.PINUS.getName());
+        checkBoxLarix.setText(PolishSubtitles.LARIX.getName());
+        checkBoxFagus.setText(PolishSubtitles.FAGUS.getName());
+        checkBoxQuercus.setText(PolishSubtitles.QUERCUS.getName());
+    }
+
+    private void setEnglishSubtitles() {
+        btnAdd.setText(EnglishSubtitles.BTN_ADD.getName());
+        btnUndo.setText(EnglishSubtitles.BTN_UNDO.getName());
+        btnReset.setText(EnglishSubtitles.BTN_RESET.getName());
+
+        lengthLabel.setText(EnglishSubtitles.LENGTH.getName());
+        diameterLabel.setText(EnglishSubtitles.DIAMETER.getName());
+        sumM3Label.setText(EnglishSubtitles.SUM_OF_M3.getName());
+
+        checkBoxPicea.setText(EnglishSubtitles.PICEA.getName());
+        checkBoxPinus.setText(EnglishSubtitles.PINUS.getName());
+        checkBoxLarix.setText(EnglishSubtitles.LARIX.getName());
+        checkBoxFagus.setText(EnglishSubtitles.FAGUS.getName());
+        checkBoxQuercus.setText(EnglishSubtitles.QUERCUS.getName());
     }
 
 }
