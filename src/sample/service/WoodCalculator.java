@@ -1,29 +1,43 @@
 package sample.service;
 
 
+/*
+
+Class to calculating single wood weight
+
+ */
+
 public class WoodCalculator {
 
 
     public static double returnWoodWeight(int length, int diameter, String woodType) {
-        double v;
+        double volume;
 
-        if (woodType.equals("Picea")) {
-            v = calculatePiceaWeight(diameter, length);
+        switch (woodType) {
+            case "Picea":
+                volume = calculatePiceaWeight(diameter, length);
+                break;
 
-        }else if (woodType.equals("Pinus")) {
-            v = calculatePinusWeight(diameter, length);
+            case "Pinus":
+                volume = calculatePinusWeight(diameter, length);
+                break;
 
-        }else if (woodType.equals("Larix")) {
-            v = calculateLarixWeight(diameter, length);
+            case "Larix":
+                volume = calculateLarixWeight(diameter, length);
+                break;
 
-        }else if (woodType.equals("Fagus")) {
-            v = calculateFagusWeight(diameter, length);
+            case "Fagus":
+                volume = calculateFagusWeight(diameter, length);
+                break;
 
-        }else {
-            v = calculateQuercusWeight(diameter, length);
+            default:
+                volume = calculateQuercusWeight(diameter, length);
+                break;
+
         }
 
-        return roundNumber(v);
+        return roundNumber(volume);
+
     }
 
     private static double calculatePiceaWeight(int diameter, int length) {
@@ -78,29 +92,5 @@ public class WoodCalculator {
 
         return number;
     }
-
-/*
-    private static double CcalculatePiceaWeight(String d, String l) {
-        /*
-        double p0 = 0.57723;
-        double p1 = 0.006897;
-        double p2 = 1.3123;
-        double pi = Math.PI;
-
-
-        BigDecimal p0 = new BigDecimal("0.57723");
-        BigDecimal p1 = new BigDecimal("0.006897");
-        BigDecimal p2 = new BigDecimal("1.3123");
-        BigDecimal pi = new BigDecimal(Math.PI);
-
-        BigDecimal diameter = new BigDecimal(d);
-        BigDecimal length = new BigDecimal(l);
-
-
-
-        return (Math.pow(diameter - (p0 + p1 * Math.pow(diameter, p2)), 2) * pi * length) / 40000;
-    }
-     */
 }
-
 

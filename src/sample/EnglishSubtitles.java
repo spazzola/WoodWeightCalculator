@@ -2,6 +2,7 @@ package sample;
 
 public enum EnglishSubtitles {
 
+
     LENGTH("Length"),
     DIAMETER("Diameter"),
     PICEA("Spruce"),
@@ -24,4 +25,5 @@ public enum EnglishSubtitles {
     public String getName() {
         return name;
     }
+
 }

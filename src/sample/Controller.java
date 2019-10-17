@@ -63,14 +63,6 @@ public class Controller {
     @FXML
     private ToggleButton togglePl;
 
-
-
-
-    public Controller() {
-
-    }
-
-
     @FXML
     void initialize() {
 
@@ -85,6 +77,8 @@ public class Controller {
         checkBoxPicea.setSelected(true);
     }
 
+    //TODO sprawdzic czy w fx da sie te checkboxy wrzucic do jednego kontenera tak ze mozna zaznaczyc tylko jeden
+    //i wtedy pobrac ktory jest zaznaczony w jedniej linii
     private String getWoodType() {
         if (checkBoxPicea.isSelected()) {
             return "Picea";
@@ -110,27 +104,26 @@ public class Controller {
         final String stringLength = lengthField.getText();
         final String stringDiameter = diameterField.getText();
 
+        final int length = Integer.parseInt(stringLength);
+        final int diameter = Integer.parseInt(stringDiameter);
+
         final String woodType = getWoodType();
-        double v = 0;
+        double volume = 0;
 
         try {
-            int length = Integer.parseInt(stringLength);
-            int diameter = Integer.parseInt(stringDiameter);
-
-            v = WoodCalculator.returnWoodWeight(length, diameter, woodType);
-            totalWeight += v;
-            lastWood = v;
-
+            volume = WoodCalculator.returnWoodWeight(length, diameter, woodType);
+            totalWeight += volume;
+            lastWood = volume;
         } catch (NumberFormatException e) {
+            //TODO zamienic souty na fx
             System.out.println("Incorrect type.");
-
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Value below 0, please insert positive value.");
         }
 
 
-        final String stringWoodWeight = Double.toString(v);
+        final String stringWoodWeight = Double.toString(volume);
         final String stringTotalWeight = Double.toString(totalWeight);
 
         m3.setText(stringWoodWeight);
