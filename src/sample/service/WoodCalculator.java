@@ -6,9 +6,7 @@ package sample.service;
 
 Class to calculating single wood weight
 
- */
-
-
+*/
 
 
 
