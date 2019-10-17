@@ -33,11 +33,8 @@ public class WoodCalculator {
             default:
                 volume = calculateQuercusWeight(diameter, length);
                 break;
-
         }
-
         return roundNumber(volume);
-
     }
 
     private static double calculatePiceaWeight(int diameter, int length) {
