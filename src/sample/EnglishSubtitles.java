@@ -3,6 +3,7 @@ package sample;
 public enum EnglishSubtitles {
 
 
+
     LENGTH("Length"),
     DIAMETER("Diameter"),
     PICEA("Spruce"),

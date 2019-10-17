@@ -1,3 +1,4 @@
+
 package sample.service;
 
 
@@ -7,10 +8,15 @@ Class to calculating single wood weight
 
  */
 
+
+
+
+
 public class WoodCalculator {
 
 
     public static double returnWoodWeight(int length, int diameter, String woodType) {
+
         double volume;
 
         switch (woodType) {
@@ -35,6 +41,7 @@ public class WoodCalculator {
                 break;
         }
         return roundNumber(volume);
+
     }
 
     private static double calculatePiceaWeight(int diameter, int length) {
@@ -89,5 +96,8 @@ public class WoodCalculator {
 
         return number;
     }
+
 }
+
+
 
