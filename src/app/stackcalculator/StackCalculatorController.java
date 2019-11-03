@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class StackCalculatorController {
     private int counter;
 
     @FXML
-    private Label typeLabel;
+    private Label assortment;
 
     @FXML
     private Label widthLabel;
@@ -69,6 +70,12 @@ public class StackCalculatorController {
 
     @FXML
     private TextField conv;
+
+    @FXML
+    private ToggleButton toggleEng;
+
+    @FXML
+    private ToggleButton togglePl;
 
 
     public void setMainContainerController(MainContainerController mainContainerController) {
@@ -160,4 +167,13 @@ public class StackCalculatorController {
         quantity.setText("0");
     }
 
+    @FXML
+    public void actionToggleEng() {
+        toggleEng.isSelected();
+    }
+
+    @FXML
+    public void actionTogglePl() {
+        togglePl.isSelected();
+    }
 }
