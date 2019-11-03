@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("woodcalculator/woodcalculator.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainContainer.fxml"));
         primaryStage.setTitle("Kalkulator miąższości drewna");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);

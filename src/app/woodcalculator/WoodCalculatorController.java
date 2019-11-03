@@ -1,5 +1,6 @@
 package app.woodcalculator;
 
+import app.MainContainerController;
 import app.error.ErrorService;
 import app.subtitles.EnglishSubtitles;
 import app.subtitles.PolishSubtitles;
@@ -14,6 +15,8 @@ import java.io.IOException;
 public class WoodCalculatorController {
 
     private ErrorService errorService = new ErrorService();
+
+    private MainContainerController mainContainerController;
 
     private boolean isEnglishSubtitles;
 
@@ -71,6 +74,9 @@ public class WoodCalculatorController {
     @FXML
     private ToggleButton togglePl;
 
+    public void setMainContainerController(MainContainerController mainContainerController) {
+        this.mainContainerController = mainContainerController;
+    }
 
     @FXML
     void initialize() {
@@ -221,6 +227,22 @@ public class WoodCalculatorController {
         checkBoxFagus.setText(EnglishSubtitles.FAGUS.getName());
         checkBoxQuercus.setText(EnglishSubtitles.QUERCUS.getName());
     }
+
+    /*public void przejdzDoListy() {
+        //zaladowanie fxml listy
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/ListaProduktow.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ListaProduktowController listaProduktowController = loader.getController();
+        listaProduktowController.setMainKontenerController(mainKontenerController);
+        //zmiana wygladu
+        mainKontenerController.setStackPane(pane);
+    }*/
 
 
 }
