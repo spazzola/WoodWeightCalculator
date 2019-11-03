@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="448.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.stackcalculator.StackCalculatorController">
+   <children>
+      <ImageView fitHeight="180.0" fitWidth="305.0" layoutX="147.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/IMG_4951.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="typeLabel" layoutX="78.0" layoutY="63.0" text="Sortyment" />
+      <Label fx:id="widthLabel" layoutX="274.0" layoutY="63.0" text="Szerokość" />
+      <Label fx:id="heightLabel" layoutX="55.0" layoutY="126.0" text="Pomiar wysokości" />
+      <TextField layoutX="38.0" layoutY="80.0" prefHeight="27.0" prefWidth="143.0" />
+      <TextField layoutX="235.0" layoutY="80.0" prefHeight="27.0" prefWidth="143.0" />
+      <TextField layoutX="39.0" layoutY="143.0" prefHeight="27.0" prefWidth="143.0" />
+      <Button fx:id="addButton" layoutX="208.0" layoutY="143.0" mnemonicParsing="false" text="Dodaj" />
+      <Button fx:id="sumButton" layoutX="27.0" layoutY="233.0" mnemonicParsing="false" text="Sumuj" textFill="#ee0000" />
+      <Label fx:id="quantityLabel" layoutX="15.0" layoutY="192.0" text="Ilość pomiarów:" />
+      <Label fx:id="sumLabel" layoutX="14.0" layoutY="293.0" text="Suma">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="186.0" layoutY="85.0" text="m" />
+      <Label layoutX="383.0" layoutY="85.0" minHeight="-Infinity" minWidth="-Infinity" text="m" />
+      <Label layoutX="186.0" layoutY="148.0" text="m" />
+      <Label fx:id="quantity" layoutX="113.0" layoutY="192.0" prefHeight="17.0" prefWidth="25.0" />
+      <Label fx:id="sum" layoutX="74.0" layoutY="293.0" text="0.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="changeWindowButton" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" text="Przejdź do obliczenia pojedyńczych sztuk" />
+      <Button fx:id="resetButton" layoutX="309.0" layoutY="143.0" mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>

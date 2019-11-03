@@ -1,11 +1,16 @@
 package app.stackcalculator;
 
+import app.MainContainerController;
+import app.error.ErrorService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class StackCalculatorController {
 
+    private ErrorService errorService = new ErrorService();
+
+    private MainContainerController mainContainerController;
 
     @FXML
     private Label typeLabel;
@@ -39,6 +44,13 @@ public class StackCalculatorController {
 
     @FXML
     private Button resetButton;
+
+
+
+    public void setMainContainerController(MainContainerController mainContainerController) {
+        this.mainContainerController = mainContainerController;
+    }
+
 
 
 
