@@ -1,9 +1,12 @@
 package app.stackcalculator;
 
+import java.io.IOException;
 import java.util.List;
 
 import app.MainContainerController;
 import app.error.ErrorService;
+import app.subtitles.EnglishSubtitles;
+import app.subtitles.PolishSubtitles;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,11 +17,9 @@ import java.util.ArrayList;
 public class StackCalculatorController {
 
     private ErrorService errorService = new ErrorService();
-
     private MainContainerController mainContainerController;
-
     private List<Double> heightsList = new ArrayList<>();
-
+    private boolean isEnglishSubtitles;
     private int counter;
 
     @FXML
@@ -76,10 +77,28 @@ public class StackCalculatorController {
 
 
     @FXML
-    public void actionAdd() {
+    public void actionAdd() throws IOException {
         String stringHeight = heightField.getText();
-        heightsList.add(Double.valueOf(stringHeight));
 
+        try {
+            heightsList.add(Double.valueOf(stringHeight));
+
+        } catch (NumberFormatException e) {
+            if (isEnglishSubtitles) {
+                this.errorService.showError(EnglishSubtitles.INCORRECT_TYPE_ERROR.getName());
+
+            } else {
+                this.errorService.showError(PolishSubtitles.INCORRECT_TYPE_ERROR.getName());
+            }
+
+        } catch (IllegalArgumentException e) {
+            if (isEnglishSubtitles) {
+                this.errorService.showError(EnglishSubtitles.NEGATIVE_VALUE_ERROR.getName());
+
+            } else {
+                this.errorService.showError(PolishSubtitles.NEGATIVE_VALUE_ERROR.getName());
+            }
+        }
         heightField.clear();
 
         counter++;
@@ -88,16 +107,37 @@ public class StackCalculatorController {
     }
 
     @FXML
-    public void actionSum() {
+    public void actionSum() throws IOException {
         final String stringAssortment = assortmentField.getText();
         final String stringWidth = widthField.getText();
         final String stringConverter = conv.getText();
+        double volume = 0;
 
-        final double assortment = Double.valueOf(stringAssortment);
-        final double width = Double.valueOf(stringWidth);
-        final double converter = Double.valueOf(stringConverter);
+        try {
 
-        final double volume = StackCalculatorService.returnStackWeight(assortment, width, converter, heightsList);
+            final double assortment = Double.valueOf(stringAssortment);
+            final double width = Double.valueOf(stringWidth);
+            final double converter = Double.valueOf(stringConverter);
+
+            volume = StackCalculatorService.returnStackWeight(assortment, width, converter, heightsList);
+
+        } catch (NumberFormatException e) {
+            if (isEnglishSubtitles) {
+                this.errorService.showError(EnglishSubtitles.INCORRECT_TYPE_ERROR.getName());
+
+            } else {
+                this.errorService.showError(PolishSubtitles.INCORRECT_TYPE_ERROR.getName());
+            }
+
+        } catch (IllegalArgumentException e) {
+            if (isEnglishSubtitles) {
+                this.errorService.showError(EnglishSubtitles.NEGATIVE_VALUE_ERROR.getName());
+
+            } else {
+                this.errorService.showError(PolishSubtitles.NEGATIVE_VALUE_ERROR.getName());
+            }
+        }
+
 
         final String stringVolume = Double.toString(volume);
 
