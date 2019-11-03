@@ -17,11 +17,10 @@ public class StackCalculatorService {
 
     //TODO add methods to calculate stacks
 
-    public static double returnStackWeight(double woodLength, double stackWidth, List<Double> heights) {
-        double coefficient = 0.64;
+    public static double returnStackWeight(double woodLength, double stackWidth, double converter, List<Double> heights) {
         double averageHeight = returnAverageHeight(heights);
 
-        double v = woodLength * stackWidth * averageHeight * coefficient;
+        double v = woodLength * stackWidth * averageHeight * converter;
 
         return WoodCalculatorService.roundNumber(v);
     }
