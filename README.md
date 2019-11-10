@@ -1,1 +1,1 @@
-Program to calculating wood weight. Still being improved
+Application still being improved.
