@@ -12,37 +12,37 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="448.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.stackcalculator.StackCalculatorController">
    <children>
-      <Label fx:id="assortment" layoutX="78.0" layoutY="63.0" text="Sortyment" />
-      <Label fx:id="widthLabel" layoutX="274.0" layoutY="63.0" text="Szerokość" />
-      <Label fx:id="heightLabel" layoutX="55.0" layoutY="135.0" text="Pomiar wysokości" />
+      <ImageView fitHeight="180.0" fitWidth="305.0" layoutX="147.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/Users/spazzola/Desktop/kalkulatorgl/images/IMG_4951.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="assortmentLabel" alignment="CENTER" layoutX="38.0" layoutY="63.0" prefHeight="17.0" prefWidth="143.0" text="Sortyment" textAlignment="CENTER" />
+      <Label fx:id="widthLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="63.0" prefHeight="17.0" prefWidth="143.0" text="Szerokość" textAlignment="CENTER" />
+      <Label fx:id="heightMeasurementLabel" alignment="CENTER" layoutX="38.0" layoutY="135.0" prefHeight="17.0" prefWidth="143.0" text="Pomiar wysokości" textAlignment="CENTER" />
       <TextField fx:id="assortmentField" layoutX="38.0" layoutY="80.0" prefHeight="27.0" prefWidth="143.0" />
       <TextField fx:id="widthField" layoutX="235.0" layoutY="80.0" prefHeight="27.0" prefWidth="143.0" />
       <TextField fx:id="heightField" layoutX="38.0" layoutY="152.0" prefHeight="27.0" prefWidth="143.0" />
-      <Button fx:id="addButton" layoutX="208.0" layoutY="143.0" mnemonicParsing="false" onAction="#actionAdd" text="Dodaj" />
+      <Button fx:id="addButton" layoutX="208.0" layoutY="152.0" mnemonicParsing="false" onAction="#actionAdd" text="Dodaj" />
       <Button fx:id="sumButton" layoutX="40.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionSum" text="Sumuj" textFill="#0d0d0d" />
-      <Label fx:id="quantityLabel" layoutX="40.0" layoutY="192.0" text="Ilość pomiarów:" />
-      <Label fx:id="sumLabel" layoutX="14.0" layoutY="293.0" text="Suma">
+      <Label fx:id="quantityLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="33.0" layoutY="192.0" prefHeight="17.0" prefWidth="110.0" text="Ilość pomiarów:" textAlignment="CENTER" />
+      <Label fx:id="m3Label" alignment="CENTER_RIGHT" layoutX="74.0" layoutY="305.0" prefHeight="23.0" prefWidth="29.0" text="m3" textAlignment="RIGHT">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Label layoutX="186.0" layoutY="85.0" text="m" />
       <Label layoutX="383.0" layoutY="85.0" minHeight="-Infinity" minWidth="-Infinity" text="m" />
-      <Label layoutX="186.0" layoutY="148.0" text="m" />
-      <Label fx:id="quantity" layoutX="142.0" layoutY="192.0" prefHeight="17.0" prefWidth="25.0" text="0" />
-      <Label fx:id="sum" layoutX="74.0" layoutY="293.0" text="0.0">
+      <Label layoutX="186.0" layoutY="157.0" text="m" />
+      <Label fx:id="quantity" alignment="CENTER" layoutX="142.0" layoutY="192.0" prefHeight="17.0" prefWidth="25.0" text="0" />
+      <Label fx:id="m3" layoutX="110.0" layoutY="305.0" text="0.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="changeWindowButton" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" text="Przejdź do obliczenia pojedyńczych sztuk" />
-      <TextField fx:id="conv" layoutX="314.0" layoutY="143.0" prefHeight="27.0" prefWidth="67.0" />
-      <Label fx:id="converterLabel" layoutX="314.0" layoutY="127.0" text="Przelicznik" />
-      <ImageView fitHeight="180.0" fitWidth="305.0" layoutX="147.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="file:/Users/spazzola/Desktop/kalkulatorgl/images/IMG_4951.jpg" />
-         </image>
-      </ImageView>
+      <Button fx:id="changeWindowButton" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionChangeWindow" text="Przejdź do obliczenia pojedyńczych sztuk" />
+      <TextField fx:id="conv" layoutX="311.0" layoutY="152.0" prefHeight="27.0" prefWidth="67.0" />
+      <Label fx:id="converterLabel" alignment="CENTER" layoutX="307.0" layoutY="135.0" prefHeight="17.0" prefWidth="76.0" text="Przelicznik" textAlignment="CENTER" />
       <Button fx:id="resetButton" layoutX="130.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionReset" text="Zeruj" textFill="RED" />
       <ToggleButton fx:id="toggleEng" layoutX="384.0" layoutY="-1.0" mnemonicParsing="false" onAction="#actionToggleEng" prefHeight="23.0" prefWidth="33.0" text="Eng">
          <toggleGroup>
@@ -60,5 +60,15 @@
             <Font size="10.0" />
          </font>
       </ToggleButton>
+      <Label fx:id="sumM3Label" layoutX="5.0" layoutY="339.0" prefHeight="23.0" prefWidth="99.0" text="Łącznie m3">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="sumM3" layoutX="110.0" layoutY="339.0" text="0.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

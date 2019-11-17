@@ -2,9 +2,9 @@ package app.subtitles;
 
 public enum PolishSubtitles {
 
-/*
-   WoodCalculatorController
-*/
+    /*
+       WoodCalculatorController
+    */
     LENGTH("Długość"),
     DIAMETER("Średnica"),
 
@@ -20,23 +20,26 @@ public enum PolishSubtitles {
     BTN_UNDO("Cofnij"),
     BTN_RESET("Zeruj"),
 
-/*
-   Error messages
-*/
-    NEGATIVE_VALUE_ERROR("Wartość poniżej 0. Wprowadź dodatnie wartości."),
-    INCORRECT_TYPE_ERROR("Nieprawidłowy typ. Wprowadź liczby."),
-
-/*
-   Stack CalculatorController
-*/
+    /*
+       Stack CalculatorController
+    */
     ASSORTMENT("Sortyment"),
     WIDTH("Szerokość"),
     HEIGHT_MEASUREMENT("Pomiar wysokości"),
     CONVERTER("Przelicznik"),
-    QUANTITY("Ilość pomiarów"),
-    SUM("SUMA"),
+    QUANTITY("Ilość pomiarów:"),
+    SUM("m3"),
 
-    BTN_SUM("Sumuj");
+    BTN_SUM("Sumuj"),
+
+    /*
+       Error messages
+    */
+    NEGATIVE_VALUE_ERROR("Wartość poniżej 0. Wprowadź dodatnie wartości."),
+    INCORRECT_TYPE_ERROR("Nieprawidłowy typ. Wprowadź liczby."),
+    CONVERTER_NOT_TYPPED_ERROR("Nie wprowadzono wartości przelicznika");
+
+
 
 
     private String name;

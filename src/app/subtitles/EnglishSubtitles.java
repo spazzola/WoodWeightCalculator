@@ -2,9 +2,9 @@ package app.subtitles;
 
 public enum EnglishSubtitles {
 
-/*
-   WoodCalculatorController
-*/
+    /*
+       WoodCalculatorController
+    */
     LENGTH("Length"),
     DIAMETER("Diameter"),
 
@@ -20,21 +20,22 @@ public enum EnglishSubtitles {
     BTN_UNDO("Undo"),
     BTN_RESET("Reset"),
 
-/*
-   Error messages
-*/
+    /*
+       Error messages
+    */
     NEGATIVE_VALUE_ERROR("Value below 0. Please enter positive number."),
     INCORRECT_TYPE_ERROR("Incorrect type. Please enter numbers."),
+    CONVERTER_NOT_TYPPED_ERROR("No converter value entered"),
 
-/*
-   Stack CalculatorController
-*/
+    /*
+       Stack CalculatorController
+    */
     ASSORTMENT("Assortment"),
     WIDTH("Width"),
     HEIGHT_MEASUREMENT("Height measurement"),
     CONVERTER("Converter"),
     QUANTITY("Counter:"),
-    SUM("Sum"),
+    SUM("m3"),
 
     BTN_SUM("Add up");
 

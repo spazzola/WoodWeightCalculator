@@ -3,7 +3,6 @@ package app.stackcalculator;
 
 import app.woodcalculator.WoodCalculatorService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /***************************************

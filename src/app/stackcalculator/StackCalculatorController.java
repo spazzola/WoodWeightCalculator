@@ -7,7 +7,9 @@ import app.MainContainerController;
 import app.error.ErrorService;
 import app.subtitles.EnglishSubtitles;
 import app.subtitles.PolishSubtitles;
+import app.woodcalculator.WoodCalculatorController;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,16 +23,17 @@ public class StackCalculatorController {
     private MainContainerController mainContainerController;
     private List<Double> heightsList = new ArrayList<>();
     private boolean isEnglishSubtitles;
+    private double totalWeight = 0;
     private int counter;
 
     @FXML
-    private Label assortment;
+    private Label assortmentLabel;
 
     @FXML
     private Label widthLabel;
 
     @FXML
-    private Label heightLabel;
+    private Label heightMeasurementLabel;
 
     @FXML
     private Label converterLabel;
@@ -42,10 +45,16 @@ public class StackCalculatorController {
     private Label quantity;
 
     @FXML
-    private Label sumLabel;
+    private Label m3Label;
 
     @FXML
-    private Label sum;
+    private Label m3;
+
+    @FXML
+    private Label sumM3Label;
+
+    @FXML
+    private Label sumM3;
 
     @FXML
     private Button changeWindowButton;
@@ -82,6 +91,20 @@ public class StackCalculatorController {
         this.mainContainerController = mainContainerController;
     }
 
+    @FXML
+    void initialize() {
+
+        toggleEng.setOnAction(event -> {
+            setEnglishSubtitles();
+            isEnglishSubtitles = true;
+        });
+
+        togglePl.setOnAction(event -> {
+            setPolishSubtitles();
+            isEnglishSubtitles = false;
+        });
+
+    }
 
     @FXML
     public void actionAdd() throws IOException {
@@ -115,46 +138,60 @@ public class StackCalculatorController {
 
     @FXML
     public void actionSum() throws IOException {
-        final String stringAssortment = assortmentField.getText();
-        final String stringWidth = widthField.getText();
-        final String stringConverter = conv.getText();
-        double volume = 0;
+        if (isConverterTyped()) {
 
-        try {
+            final String stringAssortment = assortmentField.getText();
+            final String stringWidth = widthField.getText();
+            final String stringConverter = conv.getText();
+            double volume = 0;
 
-            final double assortment = Double.valueOf(stringAssortment);
-            final double width = Double.valueOf(stringWidth);
-            final double converter = Double.valueOf(stringConverter);
+            try {
 
-            volume = StackCalculatorService.returnStackWeight(assortment, width, converter, heightsList);
+                final double assortment = Double.valueOf(stringAssortment);
+                final double width = Double.valueOf(stringWidth);
+                final double converter = Double.valueOf(stringConverter);
 
-        } catch (NumberFormatException e) {
-            if (isEnglishSubtitles) {
-                this.errorService.showError(EnglishSubtitles.INCORRECT_TYPE_ERROR.getName());
+                volume = StackCalculatorService.returnStackWeight(assortment, width, converter, heightsList);
+                totalWeight += volume;
 
-            } else {
-                this.errorService.showError(PolishSubtitles.INCORRECT_TYPE_ERROR.getName());
+            } catch (NumberFormatException e) {
+                if (isEnglishSubtitles) {
+                    this.errorService.showError(EnglishSubtitles.INCORRECT_TYPE_ERROR.getName());
+
+                } else {
+                    this.errorService.showError(PolishSubtitles.INCORRECT_TYPE_ERROR.getName());
+                }
+
+            } catch (IllegalArgumentException e) {
+                if (isEnglishSubtitles) {
+                    this.errorService.showError(EnglishSubtitles.NEGATIVE_VALUE_ERROR.getName());
+
+                } else {
+                    this.errorService.showError(PolishSubtitles.NEGATIVE_VALUE_ERROR.getName());
+                }
             }
 
-        } catch (IllegalArgumentException e) {
+            final String stringVolume = Double.toString(volume);
+            final String stringTotalWeight = Double.toString(totalWeight);
+
+            m3.setText(stringVolume);
+            sumM3.setText(stringTotalWeight);
+
+            widthField.clear();
+            assortmentField.clear();
+            heightField.clear();
+            heightsList.clear();
+            quantity.setText("0");
+            counter = 0;
+        } else {
             if (isEnglishSubtitles) {
-                this.errorService.showError(EnglishSubtitles.NEGATIVE_VALUE_ERROR.getName());
+                this.errorService.showError(EnglishSubtitles.CONVERTER_NOT_TYPPED_ERROR.getName());
 
             } else {
-                this.errorService.showError(PolishSubtitles.NEGATIVE_VALUE_ERROR.getName());
+                this.errorService.showError(PolishSubtitles.CONVERTER_NOT_TYPPED_ERROR.getName());
             }
         }
 
-
-        final String stringVolume = Double.toString(volume);
-
-        sum.setText(stringVolume);
-
-        widthField.clear();
-        assortmentField.clear();
-        heightField.clear();
-        heightsList.clear();
-        quantity.setText("0");
     }
 
     @FXML
@@ -163,8 +200,20 @@ public class StackCalculatorController {
         assortmentField.clear();
         heightField.clear();
         heightsList.clear();
-        sum.setText("0.0");
+        m3.setText("0.0");
+        sumM3.setText("0.0");
         quantity.setText("0");
+        totalWeight = 0;
+        counter = 0;
+    }
+
+    private boolean isConverterTyped() {
+        return !conv.getText().isEmpty();
+    }
+
+    @FXML
+    public void actionChangeWindow(){
+
     }
 
     @FXML
@@ -176,4 +225,37 @@ public class StackCalculatorController {
     public void actionTogglePl() {
         togglePl.isSelected();
     }
+
+    private void setPolishSubtitles() {
+        addButton.setText(PolishSubtitles.BTN_ADD.getName());
+        resetButton.setText(PolishSubtitles.BTN_RESET.getName());
+        sumButton.setText(PolishSubtitles.BTN_SUM.getName());
+
+        assortmentLabel.setText(PolishSubtitles.ASSORTMENT.getName());
+        widthLabel.setText(PolishSubtitles.WIDTH.getName());
+        heightMeasurementLabel.setText(PolishSubtitles.HEIGHT_MEASUREMENT.getName());
+        converterLabel.setText(PolishSubtitles.CONVERTER.getName());
+        quantityLabel.setText(PolishSubtitles.QUANTITY.getName());
+        m3Label.setText(PolishSubtitles.SUM.getName());
+        sumM3Label.setText(PolishSubtitles.SUM_OF_M3.getName());
+
+    }
+
+    private void setEnglishSubtitles() {
+        addButton.setText(EnglishSubtitles.BTN_ADD.getName());
+        resetButton.setText(EnglishSubtitles.BTN_RESET.getName());
+        sumButton.setText(EnglishSubtitles.BTN_SUM.getName());
+
+        assortmentLabel.setText(EnglishSubtitles.ASSORTMENT.getName());
+        widthLabel.setText(EnglishSubtitles.WIDTH.getName());
+        heightMeasurementLabel.setText(EnglishSubtitles.HEIGHT_MEASUREMENT.getName());
+        converterLabel.setText(EnglishSubtitles.CONVERTER.getName());
+        quantityLabel.setText(EnglishSubtitles.QUANTITY.getName());
+        m3Label.setText(EnglishSubtitles.SUM.getName());
+        sumM3Label.setText(EnglishSubtitles.SUM_OF_M3.getName());
+
+        quantityLabel.setAlignment(Pos.TOP_RIGHT);
+        sumM3Label.setAlignment(Pos.TOP_RIGHT);
+    }
+
 }
