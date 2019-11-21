@@ -1,6 +1,5 @@
 package app;
 
-import app.stackcalculator.StackCalculatorController;
 import app.woodcalculator.WoodCalculatorController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,11 +16,12 @@ public class MainContainerController {
         @FXML
         public void initialize() {
             startApp();
+            //createSingleton and pass this object instance to it
         }
 
 
         public void startApp() {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("stackcalculator/stackcalculator.fxml"));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("woodcalculator/woodcalculator.fxml"));
             Pane pane = null;
             try {
                 pane = loader.load();
@@ -29,7 +29,7 @@ public class MainContainerController {
                 e.printStackTrace();
             }
 
-            StackCalculatorController woodCalculatorController = loader.getController();
+            WoodCalculatorController woodCalculatorController = loader.getController();
             woodCalculatorController.setMainContainerController(this);
 
             setStackPane(pane);

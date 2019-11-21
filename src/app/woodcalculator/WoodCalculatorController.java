@@ -2,13 +2,16 @@ package app.woodcalculator;
 
 import app.MainContainerController;
 import app.error.ErrorService;
+import app.stackcalculator.StackCalculatorController;
 import app.subtitles.EnglishSubtitles;
 import app.subtitles.PolishSubtitles;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -31,6 +34,9 @@ public class WoodCalculatorController {
 
     @FXML
     private Button btnReset;
+
+    @FXML
+    private Button switchWindowBtn;
 
     @FXML
     private Label m3;
@@ -188,6 +194,21 @@ public class WoodCalculatorController {
     }
 
     @FXML
+    public void openStackCalculator() {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../stackcalculator/stackcalculator.fxml"));
+        Pane pane = null;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        StackCalculatorController stackCalculatorController = loader.getController();
+        stackCalculatorController.setMainContainerController(mainContainerController);
+        mainContainerController.setStackPane(pane);
+    }
+
+    @FXML
     public void actionToggleEng() {
         toggleEng.isSelected();
     }
@@ -201,6 +222,7 @@ public class WoodCalculatorController {
         btnAdd.setText(PolishSubtitles.BTN_ADD.getName());
         btnUndo.setText(PolishSubtitles.BTN_UNDO.getName());
         btnReset.setText(PolishSubtitles.BTN_RESET.getName());
+        switchWindowBtn.setText(PolishSubtitles.BTN_SWITCH_WINDOW_WD.getName());
 
         lengthLabel.setText(PolishSubtitles.LENGTH.getName());
         diameterLabel.setText(PolishSubtitles.DIAMETER.getName());
@@ -217,6 +239,7 @@ public class WoodCalculatorController {
         btnAdd.setText(EnglishSubtitles.BTN_ADD.getName());
         btnUndo.setText(EnglishSubtitles.BTN_UNDO.getName());
         btnReset.setText(EnglishSubtitles.BTN_RESET.getName());
+        switchWindowBtn.setText(EnglishSubtitles.BTN_SWITCH_WINDOW_WD.getName());
 
         lengthLabel.setText(EnglishSubtitles.LENGTH.getName());
         diameterLabel.setText(EnglishSubtitles.DIAMETER.getName());
@@ -228,22 +251,5 @@ public class WoodCalculatorController {
         checkBoxFagus.setText(EnglishSubtitles.FAGUS.getName());
         checkBoxQuercus.setText(EnglishSubtitles.QUERCUS.getName());
     }
-
-    /*public void przejdzDoListy() {
-        //zaladowanie fxml listy
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/ListaProduktow.fxml"));
-        Pane pane = null;
-        try {
-            pane = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        ListaProduktowController listaProduktowController = loader.getController();
-        listaProduktowController.setMainKontenerController(mainKontenerController);
-        //zmiana wygladu
-        mainKontenerController.setStackPane(pane);
-    }*/
-
 
 }

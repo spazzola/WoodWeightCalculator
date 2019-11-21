@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="180.0" fitWidth="305.0" layoutX="147.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/Users/spazzola/Desktop/kalkulatorgl/images/IMG_4951.jpg" />
+            <Image url="@../images/IMG_4951.jpg" />
          </image>
       </ImageView>
       <Label fx:id="assortmentLabel" alignment="CENTER" layoutX="38.0" layoutY="63.0" prefHeight="17.0" prefWidth="143.0" text="Sortyment" textAlignment="CENTER" />
@@ -40,7 +40,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="changeWindowButton" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionChangeWindow" text="Przejdź do obliczenia pojedyńczych sztuk" />
+      <Button fx:id="switchWindowBtn" alignment="CENTER_RIGHT" layoutX="120.0" layoutY="23.0" mnemonicParsing="false" onAction="#openStackCalculator" text="Obliczanie pojedyńczych sztuk" textAlignment="CENTER" />
       <TextField fx:id="conv" layoutX="311.0" layoutY="152.0" prefHeight="27.0" prefWidth="67.0" />
       <Label fx:id="converterLabel" alignment="CENTER" layoutX="307.0" layoutY="135.0" prefHeight="17.0" prefWidth="76.0" text="Przelicznik" textAlignment="CENTER" />
       <Button fx:id="resetButton" layoutX="130.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionReset" text="Zeruj" textFill="RED" />

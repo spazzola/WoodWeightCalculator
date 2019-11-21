@@ -19,13 +19,8 @@ public enum EnglishSubtitles {
     BTN_ADD("Add"),
     BTN_UNDO("Undo"),
     BTN_RESET("Reset"),
+    BTN_SWITCH_WINDOW_WD("Calculating stack"),
 
-    /*
-       Error messages
-    */
-    NEGATIVE_VALUE_ERROR("Value below 0. Please enter positive number."),
-    INCORRECT_TYPE_ERROR("Incorrect type. Please enter numbers."),
-    CONVERTER_NOT_TYPPED_ERROR("No converter value entered"),
 
     /*
        Stack CalculatorController
@@ -37,7 +32,16 @@ public enum EnglishSubtitles {
     QUANTITY("Counter:"),
     SUM("m3"),
 
-    BTN_SUM("Add up");
+    BTN_SUM("Add up"),
+    BTN_SWITCH_WINDOW_STCK("Calculating single wood"),
+
+
+    /*
+       Error messages
+    */
+    NEGATIVE_VALUE_ERROR("Value below 0. Please enter positive number."),
+    INCORRECT_TYPE_ERROR("Incorrect type. Please enter numbers."),
+    CONVERTER_NOT_TYPPED_ERROR("No converter value entered");
 
 
 

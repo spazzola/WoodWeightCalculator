@@ -19,6 +19,8 @@ public enum PolishSubtitles {
     BTN_ADD("Dodaj"),
     BTN_UNDO("Cofnij"),
     BTN_RESET("Zeruj"),
+    BTN_SWITCH_WINDOW_WD("Obliczanie stosów"),
+
 
     /*
        Stack CalculatorController
@@ -31,6 +33,8 @@ public enum PolishSubtitles {
     SUM("m3"),
 
     BTN_SUM("Sumuj"),
+    BTN_SWITCH_WINDOW_STCK("Obliczanie pojedyńczych sztuk"),
+
 
     /*
        Error messages

@@ -26,7 +26,7 @@
          <children>
             <ImageView fx:id="logoGL" fitHeight="180.0" fitWidth="305.0" layoutX="147.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/Users/spazzola/Desktop/kalkulatorgl/images/IMG_4951.jpg" />
+                  <Image url="@../images/IMG_4951.jpg" />
                </image>
             </ImageView>
             <TextField fx:id="lengthField" layoutX="122.0" layoutY="97.0" />
@@ -76,6 +76,7 @@
                </font>
             </ToggleButton>
             <Button fx:id="btnUndo" layoutX="212.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionUndo" prefWidth="55.0" text="Cofnij" />
+            <Button fx:id="switchWindowBtn" layoutX="147.0" layoutY="33.0" mnemonicParsing="false" onAction="#openStackCalculator" text="Obliczanie stosów" />
          </children>
       </Pane>
    </children>
