@@ -8,5 +8,5 @@ Thanks to this solution you can quickly calculate weight of single wood or stack
 - SceneBuilder
 
 ### To Do
-- switching between Panes should be operated by class/interface
+- switching between Panes should be operated by another class/interface
 - change all double values to BigDecimal
