@@ -24,9 +24,24 @@ public class StackCalculatorController {
     private ErrorService errorService = new ErrorService();
     private MainContainerController mainContainerController;
     private List<Double> heightsList = new ArrayList<>();
+    private String stringAssortment;
+    private String stringWidth;
+    private String stringHeight;
     private boolean isEnglishSubtitles;
     private double totalWeight = 0;
     private int counter;
+
+    @FXML
+    private Button switchWindowBtn;
+
+    @FXML
+    private Button addBtn;
+
+    @FXML
+    private Button sumBtn;
+
+    @FXML
+    private Button resetBtn;
 
     @FXML
     private Label assortmentLabel;
@@ -50,25 +65,13 @@ public class StackCalculatorController {
     private Label m3Label;
 
     @FXML
-    private Label m3;
-
-    @FXML
     private Label sumM3Label;
 
     @FXML
+    private Label m3;
+
+    @FXML
     private Label sumM3;
-
-    @FXML
-    private Button switchWindowBtn;
-
-    @FXML
-    private Button addButton;
-
-    @FXML
-    private Button sumButton;
-
-    @FXML
-    private Button resetButton;
 
     @FXML
     private TextField assortmentField;
@@ -80,7 +83,7 @@ public class StackCalculatorController {
     private TextField heightField;
 
     @FXML
-    private TextField conv;
+    private TextField converterField;
 
     @FXML
     private ToggleButton toggleEng;
@@ -95,7 +98,6 @@ public class StackCalculatorController {
 
     @FXML
     void initialize() {
-
         toggleEng.setOnAction(event -> {
             setEnglishSubtitles();
             isEnglishSubtitles = true;
@@ -109,11 +111,24 @@ public class StackCalculatorController {
     }
 
     @FXML
-    public void actionAdd() throws IOException {
-        String stringHeight = heightField.getText();
+    private void actionAdd() throws IOException {
+        stringHeight = heightField.getText();
+        stringAssortment = assortmentField.getText();
+        stringWidth = widthField.getText();
 
         try {
-            heightsList.add(Double.valueOf(stringHeight));
+            double assortment = Double.parseDouble(stringAssortment);
+            double width = Double.parseDouble(stringWidth);
+            double height = Double.valueOf(stringHeight);
+
+            if (assortment < 0 || width < 0 || height < 0) {
+                clearFields(assortmentField, widthField);
+                throw new IllegalArgumentException();
+            }
+
+            heightsList.add(height);
+            counter++;
+            quantity.setText(Integer.toString(counter));
 
         } catch (NumberFormatException e) {
             if (isEnglishSubtitles) {
@@ -131,24 +146,19 @@ public class StackCalculatorController {
                 this.errorService.showError(PolishSubtitles.NEGATIVE_VALUE_ERROR.getName());
             }
         }
-        heightField.clear();
-
-        counter++;
-        quantity.setText(Integer.toString(counter));
+        clearFields(heightField);
 
     }
 
     @FXML
-    public void actionSum() throws IOException {
+    private void actionSum() throws IOException {
         if (isConverterTyped()) {
 
             double volume = 0;
 
             try {
-                //TODO move assortment, width to actionAdd and there handle exception
-                final String stringAssortment = assortmentField.getText();
-                final String stringWidth = widthField.getText();
-                final String stringConverter = conv.getText();
+
+                final String stringConverter = converterField.getText();
 
                 final double assortment = Double.valueOf(stringAssortment);
                 final double width = Double.valueOf(stringWidth);
@@ -180,9 +190,7 @@ public class StackCalculatorController {
             m3.setText(stringVolume);
             sumM3.setText(stringTotalWeight);
 
-            widthField.clear();
-            assortmentField.clear();
-            heightField.clear();
+            clearFields(widthField, assortmentField, heightField);
             heightsList.clear();
             quantity.setText("0");
             counter = 0;
@@ -199,10 +207,8 @@ public class StackCalculatorController {
     }
 
     @FXML
-    public void actionReset() {
-        widthField.clear();
-        assortmentField.clear();
-        heightField.clear();
+    private void actionReset() {
+        clearFields(widthField, assortmentField, heightField);
         heightsList.clear();
         m3.setText("0.0");
         sumM3.setText("0.0");
@@ -211,17 +217,8 @@ public class StackCalculatorController {
         counter = 0;
     }
 
-    private boolean isConverterTyped() {
-        return !conv.getText().isEmpty();
-    }
-
     @FXML
-    public void actionChangeWindow(){
-
-    }
-
-    @FXML
-    public void openStackCalculator() {
+    private void openStackCalculator() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../woodcalculator/woodcalculator.fxml"));
         Pane pane = null;
         try {
@@ -236,19 +233,19 @@ public class StackCalculatorController {
     }
 
     @FXML
-    public void actionToggleEng() {
+    private void actionToggleEng() {
         toggleEng.isSelected();
     }
 
     @FXML
-    public void actionTogglePl() {
+    private void actionTogglePl() {
         togglePl.isSelected();
     }
 
     private void setPolishSubtitles() {
-        addButton.setText(PolishSubtitles.BTN_ADD.getName());
-        resetButton.setText(PolishSubtitles.BTN_RESET.getName());
-        sumButton.setText(PolishSubtitles.BTN_SUM.getName());
+        addBtn.setText(PolishSubtitles.BTN_ADD.getName());
+        resetBtn.setText(PolishSubtitles.BTN_RESET.getName());
+        sumBtn.setText(PolishSubtitles.BTN_SUM.getName());
         switchWindowBtn.setText(PolishSubtitles.BTN_SWITCH_WINDOW_STCK.getName());
 
         assortmentLabel.setText(PolishSubtitles.ASSORTMENT.getName());
@@ -262,9 +259,9 @@ public class StackCalculatorController {
     }
 
     private void setEnglishSubtitles() {
-        addButton.setText(EnglishSubtitles.BTN_ADD.getName());
-        resetButton.setText(EnglishSubtitles.BTN_RESET.getName());
-        sumButton.setText(EnglishSubtitles.BTN_SUM.getName());
+        addBtn.setText(EnglishSubtitles.BTN_ADD.getName());
+        resetBtn.setText(EnglishSubtitles.BTN_RESET.getName());
+        sumBtn.setText(EnglishSubtitles.BTN_SUM.getName());
         switchWindowBtn.setText(EnglishSubtitles.BTN_SWITCH_WINDOW_STCK.getName());
 
         assortmentLabel.setText(EnglishSubtitles.ASSORTMENT.getName());
@@ -281,5 +278,16 @@ public class StackCalculatorController {
         quantityLabel.setAlignment(Pos.TOP_RIGHT);
         sumM3Label.setAlignment(Pos.TOP_RIGHT);
     }
+
+    private void clearFields(TextField... fields) {
+        for (TextField field : fields) {
+            field.clear();
+        }
+    }
+
+    private boolean isConverterTyped() {
+        return !converterField.getText().isEmpty();
+    }
+
 
 }

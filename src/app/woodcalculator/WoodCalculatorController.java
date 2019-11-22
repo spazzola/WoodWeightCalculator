@@ -18,31 +18,22 @@ import java.io.IOException;
 public class WoodCalculatorController {
 
     private ErrorService errorService = new ErrorService();
-
     private MainContainerController mainContainerController;
-
     private boolean isEnglishSubtitles;
-
     private double lastWood;
     private double totalWeight = 0;
-
-    @FXML
-    private Button btnAdd;
-
-    @FXML
-    private Button btnUndo;
-
-    @FXML
-    private Button btnReset;
 
     @FXML
     private Button switchWindowBtn;
 
     @FXML
-    private Label m3;
+    private Button addBtn;
 
     @FXML
-    private Label sumM3;
+    private Button undoBtn;
+
+    @FXML
+    private Button resetBtn;
 
     @FXML
     private Label sumM3Label;
@@ -52,6 +43,12 @@ public class WoodCalculatorController {
 
     @FXML
     private Label diameterLabel;
+
+    @FXML
+    private Label m3;
+
+    @FXML
+    private Label sumM3;
 
     @FXML
     private TextField lengthField;
@@ -102,8 +99,7 @@ public class WoodCalculatorController {
     }
 
 
-    //TODO sprawdzic czy w fx da sie te checkboxy wrzucic do jednego kontenera tak ze mozna zaznaczyc tylko jeden
-    //i wtedy pobrac ktory jest zaznaczony w jedniej linii
+    //TODO move checkboxex to one box, while one is selected, another can't be
     private String getWoodType() {
         if (checkBoxPicea.isSelected()) {
             return "Picea";
@@ -125,7 +121,7 @@ public class WoodCalculatorController {
     }
 
     @FXML
-    public void actionDodaj() throws IOException {
+    public void actionAdd() throws IOException {
         final String stringLength = lengthField.getText();
         final String stringDiameter = diameterField.getText();
         double volume = 0;
@@ -175,8 +171,8 @@ public class WoodCalculatorController {
     }
 
     @FXML
-    public void actionZeruj() {
-        btnReset.setOnAction(event -> {
+    public void actionReset() {
+        resetBtn.setOnAction(event -> {
             m3.setText("0.00");
             sumM3.setText("0.00");
             totalWeight = 0;
@@ -185,7 +181,7 @@ public class WoodCalculatorController {
 
     @FXML
     public void actionUndo() {
-        btnUndo.setOnAction(event -> {
+        undoBtn.setOnAction(event -> {
             totalWeight -= lastWood;
             String stringTotalWeight = Double.toString(totalWeight);
             m3.setText("0.00");
@@ -219,9 +215,9 @@ public class WoodCalculatorController {
     }
 
     private void setPolishSubtitles() {
-        btnAdd.setText(PolishSubtitles.BTN_ADD.getName());
-        btnUndo.setText(PolishSubtitles.BTN_UNDO.getName());
-        btnReset.setText(PolishSubtitles.BTN_RESET.getName());
+        addBtn.setText(PolishSubtitles.BTN_ADD.getName());
+        undoBtn.setText(PolishSubtitles.BTN_UNDO.getName());
+        resetBtn.setText(PolishSubtitles.BTN_RESET.getName());
         switchWindowBtn.setText(PolishSubtitles.BTN_SWITCH_WINDOW_WD.getName());
 
         lengthLabel.setText(PolishSubtitles.LENGTH.getName());
@@ -236,9 +232,9 @@ public class WoodCalculatorController {
     }
 
     private void setEnglishSubtitles() {
-        btnAdd.setText(EnglishSubtitles.BTN_ADD.getName());
-        btnUndo.setText(EnglishSubtitles.BTN_UNDO.getName());
-        btnReset.setText(EnglishSubtitles.BTN_RESET.getName());
+        addBtn.setText(EnglishSubtitles.BTN_ADD.getName());
+        undoBtn.setText(EnglishSubtitles.BTN_UNDO.getName());
+        resetBtn.setText(EnglishSubtitles.BTN_RESET.getName());
         switchWindowBtn.setText(EnglishSubtitles.BTN_SWITCH_WINDOW_WD.getName());
 
         lengthLabel.setText(EnglishSubtitles.LENGTH.getName());

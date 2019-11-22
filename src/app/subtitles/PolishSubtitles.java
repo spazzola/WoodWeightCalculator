@@ -45,7 +45,6 @@ public enum PolishSubtitles {
 
 
 
-
     private String name;
 
     PolishSubtitles(String name) {

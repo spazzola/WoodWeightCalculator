@@ -33,7 +33,7 @@
             <TextField fx:id="diameterField" layoutX="122.0" layoutY="151.0" />
             <Label fx:id="lengthLabel" layoutX="57.0" layoutY="102.0" text="Długość" textAlignment="CENTER" />
             <Label fx:id="diameterLabel" layoutX="55.0" layoutY="156.0" text="Średnica" />
-            <Button fx:id="btnAdd" layoutX="140.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionDodaj" prefWidth="55.0" text="Dodaj" />
+            <Button fx:id="addBtn" layoutX="140.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionAdd" prefWidth="55.0" text="Dodaj" />
             <Label fx:id="m3Label" layoutX="68.0" layoutY="268.0" text="m3">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -54,7 +54,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnReset" layoutX="178.0" layoutY="226.0" mnemonicParsing="false" onAction="#actionZeruj" prefHeight="27.0" prefWidth="55.0" text="Zeruj" textFill="#f50505" />
+            <Button fx:id="resetBtn" layoutX="178.0" layoutY="226.0" mnemonicParsing="false" onAction="#actionReset" prefHeight="27.0" prefWidth="55.0" text="Zeruj" textFill="#f50505" />
             <CheckBox fx:id="checkBoxPicea" layoutX="336.0" layoutY="75.0" mnemonicParsing="false" text="Świerk" />
             <CheckBox fx:id="checkBoxPinus" layoutX="336.0" layoutY="105.0" mnemonicParsing="false" text="Sosna" />
             <CheckBox fx:id="checkBoxLarix" layoutX="336.0" layoutY="135.0" mnemonicParsing="false" text="Modrzew" />
@@ -75,7 +75,7 @@
                   <Font size="10.0" />
                </font>
             </ToggleButton>
-            <Button fx:id="btnUndo" layoutX="212.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionUndo" prefWidth="55.0" text="Cofnij" />
+            <Button fx:id="undoBtn" layoutX="212.0" layoutY="192.0" mnemonicParsing="false" onAction="#actionUndo" prefWidth="55.0" text="Cofnij" />
             <Button fx:id="switchWindowBtn" layoutX="147.0" layoutY="33.0" mnemonicParsing="false" onAction="#openStackCalculator" text="Obliczanie stosów" />
          </children>
       </Pane>

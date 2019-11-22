@@ -23,8 +23,8 @@
       <TextField fx:id="assortmentField" layoutX="38.0" layoutY="80.0" prefHeight="27.0" prefWidth="143.0" />
       <TextField fx:id="widthField" layoutX="235.0" layoutY="80.0" prefHeight="27.0" prefWidth="143.0" />
       <TextField fx:id="heightField" layoutX="38.0" layoutY="152.0" prefHeight="27.0" prefWidth="143.0" />
-      <Button fx:id="addButton" layoutX="208.0" layoutY="152.0" mnemonicParsing="false" onAction="#actionAdd" text="Dodaj" />
-      <Button fx:id="sumButton" layoutX="40.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionSum" text="Sumuj" textFill="#0d0d0d" />
+      <Button fx:id="addBtn" layoutX="208.0" layoutY="152.0" mnemonicParsing="false" onAction="#actionAdd" text="Dodaj" />
+      <Button fx:id="sumBtn" layoutX="40.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionSum" text="Sumuj" textFill="#0d0d0d" />
       <Label fx:id="quantityLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="33.0" layoutY="192.0" prefHeight="17.0" prefWidth="110.0" text="Ilość pomiarów:" textAlignment="CENTER" />
       <Label fx:id="m3Label" alignment="CENTER_RIGHT" layoutX="74.0" layoutY="305.0" prefHeight="23.0" prefWidth="29.0" text="m3" textAlignment="RIGHT">
          <font>
@@ -41,21 +41,15 @@
          </font>
       </Label>
       <Button fx:id="switchWindowBtn" alignment="CENTER_RIGHT" layoutX="120.0" layoutY="23.0" mnemonicParsing="false" onAction="#openStackCalculator" text="Obliczanie pojedyńczych sztuk" textAlignment="CENTER" />
-      <TextField fx:id="conv" layoutX="311.0" layoutY="152.0" prefHeight="27.0" prefWidth="67.0" />
+      <TextField fx:id="converterField" layoutX="311.0" layoutY="152.0" prefHeight="27.0" prefWidth="67.0" />
       <Label fx:id="converterLabel" alignment="CENTER" layoutX="307.0" layoutY="135.0" prefHeight="17.0" prefWidth="76.0" text="Przelicznik" textAlignment="CENTER" />
-      <Button fx:id="resetButton" layoutX="130.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionReset" text="Zeruj" textFill="RED" />
+      <Button fx:id="resetBtn" layoutX="130.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionReset" text="Zeruj" textFill="RED" />
       <ToggleButton fx:id="toggleEng" layoutX="384.0" layoutY="-1.0" mnemonicParsing="false" onAction="#actionToggleEng" prefHeight="23.0" prefWidth="33.0" text="Eng">
-         <toggleGroup>
-            <ToggleGroup fx:id="toggleGroup1" />
-         </toggleGroup>
          <font>
             <Font size="10.0" />
          </font>
       </ToggleButton>
       <ToggleButton fx:id="togglePl" layoutX="417.0" mnemonicParsing="false" onAction="#actionTogglePl" prefHeight="23.0" prefWidth="33.0" selected="true" text="Pl">
-         <toggleGroup>
-            <ToggleGroup fx:id="toggleGroup1" />
-         </toggleGroup>
          <font>
             <Font size="10.0" />
          </font>
