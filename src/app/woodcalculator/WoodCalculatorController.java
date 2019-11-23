@@ -99,7 +99,7 @@ public class WoodCalculatorController {
     }
 
 
-    //TODO move checkboxex to one box, while one is selected, another can't be
+    //TODO move checkboxes to one box, while one is selected, another can't be
     private String getWoodType() {
         if (checkBoxPicea.isSelected()) {
             return "Picea";

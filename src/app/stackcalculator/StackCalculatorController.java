@@ -262,6 +262,7 @@ public class StackCalculatorController {
         addBtn.setText(EnglishSubtitles.BTN_ADD.getName());
         resetBtn.setText(EnglishSubtitles.BTN_RESET.getName());
         sumBtn.setText(EnglishSubtitles.BTN_SUM.getName());
+        //TODO set proper alignment for switchWindowBtn
         switchWindowBtn.setText(EnglishSubtitles.BTN_SWITCH_WINDOW_STCK.getName());
 
         assortmentLabel.setText(EnglishSubtitles.ASSORTMENT.getName());
@@ -271,9 +272,6 @@ public class StackCalculatorController {
         quantityLabel.setText(EnglishSubtitles.QUANTITY.getName());
         m3Label.setText(EnglishSubtitles.SUM.getName());
         sumM3Label.setText(EnglishSubtitles.SUM_OF_M3.getName());
-
-        //TODO set same alignment as for Pl btn
-        //switchWindowBtn.setAlignment(Pos.TOP_RIGHT);
 
         quantityLabel.setAlignment(Pos.TOP_RIGHT);
         sumM3Label.setAlignment(Pos.TOP_RIGHT);

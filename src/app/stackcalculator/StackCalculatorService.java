@@ -14,8 +14,6 @@ import java.util.List;
 public class StackCalculatorService {
 
 
-    //TODO add methods to calculate stacks
-
     public static double returnStackWeight(double woodLength, double stackWidth, double converter, List<Double> heights) {
         double averageHeight = returnAverageHeight(heights);
 
