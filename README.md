@@ -16,7 +16,7 @@ Clone this repository using git clone https://github.com/your-username/foresters
 Navigate to the project directory using cd foresters-wood-weight-calculator
 Install the required dependencies using *mvn clean install*
 Run the application using *mvn exec:java*
-##Usage
+## Usage
 
 Once the application is running, you can start using it to calculate the weight of single wood or stack.
 
